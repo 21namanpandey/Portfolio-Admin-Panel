@@ -19,3 +19,24 @@ export const sendMessage = catchAsyncError(async (req, res, next) => {
         data,
     })
 })
+
+export const sendAllMessage = catchAsyncError(async(req,res,next) => {
+    const messages = await Message.find();
+    res.status(200).json({
+        success: true,
+        messages,
+    });
+});
+
+export const deleteMessage = catchAsyncError(async(req,res,next) => {
+    const {id} = req.params;
+    const message = await Message.findById(id);
+    if (!message) {
+        return next(new ErrorHandler("Mesage already deleted"), 400);
+    }
+    await message.deleteOne();
+    res.status(200).json({
+        success: true,
+        message: "Message deleted "
+    });
+});
