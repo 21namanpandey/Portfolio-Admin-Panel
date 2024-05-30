@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
-const userSchema = new mongoose({
+const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
         required: [true, "Name is required"]
