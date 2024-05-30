@@ -1,6 +1,10 @@
 {
   "singleQuote": false,
+<<<<<<< HEAD
   "bracketSpacing": true,
+=======
+  "bracketSpacing": false,
+>>>>>>> e87ec5540d173dab1df81e8a1014780e87edb749
   "tabWidth": 4,
   "trailingComma": "es5",
   "semi": true
