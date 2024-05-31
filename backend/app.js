@@ -8,7 +8,8 @@ import { errorMiddleware } from "./middlewares/error.js";
 import messageRouter from "./routers/messageRoute.js"
 import userRouter from "./routers/userRouter.js"
 import timelineRouter from "./routers/timelineRoute.js"
-import softwareApplication from "./routers/softwareApplicationRoute.js"
+import softwareApplicationRouter from "./routers/softwareApplicationRoute.js"
+import skillRouter from "./routers/skillRoute.js"
 
 const app = express();
 
@@ -36,7 +37,8 @@ app.use(
 app.use("/api/v1/message", messageRouter)
 app.use("/api/v1/user", userRouter)
 app.use("/api/v1/timeline", timelineRouter)
-app.use("/api/v1/softwareApplication", softwareApplication)
+app.use("/api/v1/softwareApplication", softwareApplicationRouter)
+app.use("/api/v1/skill", skillRouter)
 
 dbConnection()
 app.use(errorMiddleware)
