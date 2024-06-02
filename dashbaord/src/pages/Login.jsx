@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -68,13 +69,17 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <Button
-                            type="submit"
-                            className="w-full"
-                            onClick={handleLogin}
-                        >
-                            Login
-                        </Button>
+                        {loading ? (
+                            <SpecialLoadingButton content={"Logging In"} />
+                        ) : (
+                            <Button
+                                type="submit"
+                                className="w-full"
+                                onClick={handleLogin}
+                            >
+                                Login
+                            </Button>
+                        )}
                     </div>
                 </div>
             </div>
