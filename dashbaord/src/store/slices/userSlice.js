@@ -151,10 +151,10 @@ export const logout = () => async (dispatch) => {
                 withCredentials: true,
             }
         );
-        dispatch(userSlice.actions.loginSuccess(data.message));
+        dispatch(userSlice.actions.logoutSuccess(data.message));
         dispatch(userSlice.actions.clearAllError());
     } catch (error) {
-        dispatch(userSlice.actions.loginFailed(error.response.data.message));
+        dispatch(userSlice.actions.logoutFailed(error.response.data.message));
     }
 };
 
