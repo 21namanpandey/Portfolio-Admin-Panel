@@ -9,7 +9,7 @@ const userSlice = createSlice({
         isAuthenticated: false,
         error: null,
         message: null,
-        isUpadted: false,
+        isUpdated: false,
     },
     reducers: {
         loginRequest(state, action) {
@@ -63,48 +63,48 @@ const userSlice = createSlice({
         },
         updatePasswordRequest(state, action) {
             state.loading = true;
-            state.isUpadted = false;
+            state.isUpdated = false;
             state.message = null;
             state.error = null;
         },
         updatePasswordSuccess(state, action) {
             state.loading = false;
-            state.isUpadted = true;
+            state.isUpdated = true;
             state.message = action.payload;
             state.error = null;
         },
         updatePasswordFailed(state, action) {
             state.loading = false;
-            state.isUpadted = false;
+            state.isUpdated = false;
             state.message = null;
             state.error = action.payload;
         },
         updateProfileRequest(state, action) {
             state.loading = true;
-            state.isUpadted = false;
+            state.isUpdated = false;
             state.message = null;
             state.error = null;
         },
         updateProfileSuccess(state, action) {
             state.loading = false;
-            state.isUpadted = true;
+            state.isUpdated = true;
             state.message = action.payload;
             state.error = null;
         },
         updateProfileFailed(state, action) {
             state.loading = false;
-            state.isUpadted = false;
+            state.isUpdated = false;
             state.message = null;
             state.error = action.payload;
         },
         updateProfileResetAfterUpdate(state, action) {
             state.error = null;
-            state.isUpadted = false;
+            state.isUpdated = false;
             state.message = null;
         },
         clearAllError(state, action) {
-            state.user = {};
             state.error = action.payload;
+            state = state.user;
         },
     },
 });
