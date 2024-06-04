@@ -186,7 +186,7 @@ export const updateProfile = (data) => async (dispatch) => {
     dispatch(userSlice.actions.updateProfileRequest());
 
     try {
-        const { data } = await axios.put(
+        const response = await axios.put(
             "http://localhost:4000/api/v1/user/update/me",
             data,
             {
@@ -194,7 +194,7 @@ export const updateProfile = (data) => async (dispatch) => {
                 headers: { "Content-type": "multipart/form-data" },
             }
         );
-        dispatch(userSlice.actions.updateProfileSuccess(data.message));
+        dispatch(userSlice.actions.updateProfileSuccess(response.data.message));
         dispatch(userSlice.actions.clearAllError());
     } catch (error) {
         dispatch(
