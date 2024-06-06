@@ -146,17 +146,17 @@ const Home = () => {
                                                 : "text-muted-foreground"
                                         } transition-colors hover:text-foreground md:h-8 md:w-8`}
                                         onClick={() =>
-                                            setActive("Add Applications")
+                                            setActive("Add Application")
                                         }
                                     >
                                         <LayoutGrid className="w-5 h-5" />
                                         <span className="sr-only">
-                                            Add Applications
+                                            Add Application
                                         </span>
                                     </Link>
                                 </TooltipTrigger>
                                 <TooltipContent side="right">
-                                    Add Applications
+                                    Add Application
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
