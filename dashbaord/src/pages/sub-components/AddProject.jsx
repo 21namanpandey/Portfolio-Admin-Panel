@@ -196,10 +196,10 @@ const AddProject = () => {
                                                     <SelectValue placeholder="Is Project Deployed " />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="Full Stack">
+                                                    <SelectItem value="Yes">
                                                         Yes
                                                     </SelectItem>
-                                                    <SelectItem value="MERN">
+                                                    <SelectItem value="No">
                                                         No
                                                     </SelectItem>
                                                 </SelectContent>
