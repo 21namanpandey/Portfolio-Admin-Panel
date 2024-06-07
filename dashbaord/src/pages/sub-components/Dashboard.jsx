@@ -17,17 +17,47 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Tabs } from "@/components/ui/tabs";
+import {
+    clearAllSoftwareApplicationErrors,
+    deleteSoftwareApplication,
+    getAllSoftwareApplication,
+    resetSoftwareApplicationSlice,
+} from "@/store/slices/softwareApplicationSlice";
 import { TabsContent } from "@radix-ui/react-tabs";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import SpecialLoadingButton from "./SpecialLoadingButton";
 
 const Dashboard = () => {
     const { user } = useSelector((state) => state.user);
     const { projects } = useSelector((state) => state.project);
     const { skills } = useSelector((state) => state.skill);
-    const { softwareApplications } = useSelector((state) => state.application);
+    const { softwareApplications, error, loading, message } = useSelector(
+        (state) => state.application
+    );
     const { timeline } = useSelector((state) => state.timeline);
+
+    const dispatch = useDispatch();
+
+    const [appId, setAppId] = useState("");
+    const handleDeleteSoftwareApp = (id) => {
+        setAppId(id);
+        dispatch(deleteSoftwareApplication(id));
+    };
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error);
+            dispatch(clearAllSoftwareApplicationErrors());
+        }
+        if (message) {
+            toast.success(message);
+            dispatch(resetSoftwareApplicationSlice());
+            dispatch(getAllSoftwareApplication());
+        }
+    }, [dispatch, error, message, loading]);
     return (
         <>
             <div className=" flex flex-col sm:gap-4 sm:py-4 sm:pl-14 ">
@@ -257,9 +287,28 @@ const Dashboard = () => {
                                                                         />
                                                                     </TableCell>
                                                                     <TableCell className="text-right">
-                                                                        <Button>
-                                                                            Delete
-                                                                        </Button>
+                                                                        {loading &&
+                                                                        appId ===
+                                                                            element._id ? (
+                                                                            <SpecialLoadingButton
+                                                                                content={
+                                                                                    "Deleting"
+                                                                                }
+                                                                                width={
+                                                                                    "w-fit"
+                                                                                }
+                                                                            />
+                                                                        ) : (
+                                                                            <Button
+                                                                                onClick={() =>
+                                                                                    handleDeleteSoftwareApp(
+                                                                                        element._id
+                                                                                    )
+                                                                                }
+                                                                            >
+                                                                                Delete
+                                                                            </Button>
+                                                                        )}
                                                                     </TableCell>
                                                                 </TableRow>
                                                             );
