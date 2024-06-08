@@ -92,12 +92,12 @@ const ResetPassword = () => {
                     </div>
                 </div>
                 <div className="hidden bg-muted lg:block">
-                    <img
-                        src="/placeholder.svg"
-                        alt="Image"
-                        className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-                    />
-                </div>
+                <img
+                    src="/reset.png"
+                    alt="Image"
+                    className=" my-auto mx-auto dark:brightness-[0.2] dark:grayscale"
+                />
+            </div>
             </div>
         </>
     );
