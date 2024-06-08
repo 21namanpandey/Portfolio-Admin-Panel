@@ -76,6 +76,7 @@ const Dashboard = () => {
                                             user.portfolioURL &&
                                             user.portfolioURL
                                         }
+                                        target="_blank"
                                     >
                                         <Button>Visit Portfolio</Button>
                                     </Link>
@@ -163,7 +164,7 @@ const Dashboard = () => {
                                                                 </TableCell>
                                                                 <TableCell>
                                                                     <Link
-                                                                        to={`/update/project/&{element._id}`}
+                                                                        to={`/update/project/${element._id}`}
                                                                     >
                                                                         <Button>
                                                                             Update
@@ -177,6 +178,7 @@ const Dashboard = () => {
                                                                                 ? `${element.projectLink}`
                                                                                 : ""
                                                                         }
+                                                                        target="_blank"
                                                                     >
                                                                         <Button>
                                                                             Visit
