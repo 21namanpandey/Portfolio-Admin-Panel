@@ -203,12 +203,16 @@ export const updatePassword = catchAsyncError(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncError(async (req, res, next) => {
-    const id = "66586de833f794246442a435";
-    const user = await User.findById(id);
+    // const id = "665cb0529f60a4cabbcc4c23";
+    // const user = await User.findById(id);
+    const user = await User.findById(req.user.id)
     res.status(200).json({
         success: true,
         user,
     });
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
 });
 
 export const forgotPassword = catchAsyncError(async (req, res, next) => {
