@@ -1,9 +1,24 @@
-import React from 'react'
+import React from "react";
+import Hero from "./sub-components/Hero";
+import Timeline from "./sub-components/Timeline";
+import About from "./sub-components/About";
+import Skills from "./sub-components/Skills";
+import Portfolio from "./sub-components/Portfolio";
+import Contact from "./sub-components/Contact";
+import MyApps from "./sub-components/MyApps";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+    return (
+        <article className=" px-5 mt-8 sm:mt-14 md:mt-16 lg:mt-24 xl:mt-32 sm:mx-auto w-full max-w-[1050px] flex flex-col gap-14  ">
+            <Hero />
+            <Timeline />
+            <About />
+            <Skills />
+            <Portfolio />
+            <MyApps />
+            <Contact />
+        </article>
+    );
+};
 
-export default Home
+export default Home;
