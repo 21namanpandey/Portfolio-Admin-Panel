@@ -4,7 +4,7 @@ import {
     addNewApplication,
     deleteApplication,
     getAllApplication,
-} from "../controllers/SoftwareApplicationController.js";
+} from "../controllers/softwareApplicationController.js";
 
 const router = express.Router();
 
