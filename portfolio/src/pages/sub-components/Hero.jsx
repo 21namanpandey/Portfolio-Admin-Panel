@@ -70,7 +70,7 @@ const Hero = () => {
                         <span>GitHub</span>
                     </Button>
                 </Link>
-                <Link to={user.resumeURL && user.resume.url} target="_blank">
+                <Link to={user.resume && user.resume.url} target="_blank">
                     <Button className="rounded-[30px] flex items-center gap-2 flex-row ">
                         <span>
                             <ExternalLink />
