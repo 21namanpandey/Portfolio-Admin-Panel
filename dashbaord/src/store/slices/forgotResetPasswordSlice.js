@@ -50,7 +50,7 @@ export const forgotPassowrd = (email) => async (dispatch) => {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     try {
         const { data } = await axios.post(
-            "http://localhost:4000/api/v1/user/password/forgot",
+            "https://portfolio-admin-panel-uyro.onrender.com/api/v1/user/password/forgot",
             { email },
             {
                 withCredentials: true,
@@ -75,7 +75,7 @@ export const resetPassword =
         dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
         try {
             const { data } = await axios.put(
-                `http://localhost:4000/api/v1/user/password/reset/${token}`,
+                `https://portfolio-admin-panel-uyro.onrender.com/api/v1/user/password/reset/${token}`,
                 {  password, confirmPassword },
                 {
                     withCredentials: true,

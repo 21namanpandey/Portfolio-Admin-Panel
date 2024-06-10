@@ -88,7 +88,7 @@ export const getAllSkills = () => async (dispatch) => {
     dispatch(skillSlice.actions.getAllSkillRequest());
     try {
         const { data } = await axios.get(
-            "http://localhost:4000/api/v1/skill/getAll",
+            "https://portfolio-admin-panel-uyro.onrender.com/api/v1/skill/getAll",
             { withCredentials: true }
         );
         dispatch(skillSlice.actions.getAllSkillSuccess(data.skills));
@@ -104,7 +104,7 @@ export const addNewSkill = (data) => async (dispatch) => {
     dispatch(skillSlice.actions.addNewSkillRequest());
     try {
         const response = await axios.post(
-            "http://localhost:4000/api/v1/skill/add",
+            "https://portfolio-admin-panel-uyro.onrender.com/api/v1/skill/add",
             data,
             {
                 withCredentials: true,
@@ -124,7 +124,7 @@ export const deleteSkill = (id) => async (dispatch) => {
     dispatch(skillSlice.actions.deleteSkillRequest());
     try {
         const { data } = await axios.delete(
-            `http://localhost:4000/api/v1/skill/delete/${id}`,
+            `https://portfolio-admin-panel-uyro.onrender.com/api/v1/skill/delete/${id}`,
             { withCredentials: true }
         );
         dispatch(skillSlice.actions.deleteSkillSuccess(data.message));
@@ -140,7 +140,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
     dispatch(skillSlice.actions.updateSkillRequest());
     try {
         const { data } = await axios.put(
-            `http://localhost:4000/api/v1/skill/update/${id}`,
+            `https://portfolio-admin-panel-uyro.onrender.com/api/v1/skill/update/${id}`,
             { proficiency },
             {
                 withCredentials: true,

@@ -75,7 +75,7 @@ export const getAllSoftwareApplication = () => async (dispatch) => {
     );
     try {
         const { data } = await axios.get(
-            "http://localhost:4000/api/v1/softwareApplication/getAll",
+            "https://portfolio-admin-panel-uyro.onrender.com/api/v1/softwareApplication/getAll",
             { withCredentials: true }
         );
         dispatch(
@@ -99,7 +99,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
     );
     try {
         const response = await axios.post(
-            "http://localhost:4000/api/v1/softwareApplication/add",
+            "https://portfolio-admin-panel-uyro.onrender.com/api/v1/softwareApplication/add",
             data,
             {
                 withCredentials: true,
@@ -127,7 +127,7 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
     );
     try {
         const { data } = await axios.delete(
-            `http://localhost:4000/api/v1/softwareApplication/delete/${id}`,
+            `https://portfolio-admin-panel-uyro.onrender.com/api/v1/softwareApplication/delete/${id}`,
             { withCredentials: true }
         );
         dispatch(

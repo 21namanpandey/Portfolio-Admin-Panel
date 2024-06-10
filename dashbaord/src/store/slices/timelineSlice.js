@@ -72,7 +72,7 @@ export const getAllTimeline = () => async (dispatch) => {
     dispatch(timelineSlice.actions.getAllTimelineRequest());
     try {
         const { data } = await axios.get(
-            "http://localhost:4000/api/v1/timeline/getAll",
+            "https://portfolio-admin-panel-uyro.onrender.com/api/v1/timeline/getAll",
             { withCredentials: true }
         );
         dispatch(timelineSlice.actions.getAllTimelineSuccess(data.timelines));
@@ -90,7 +90,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
     dispatch(timelineSlice.actions.deleteTimelineRequest());
     try {
         const { data } = await axios.delete(
-            `http://localhost:4000/api/v1/timeline/delete/${id}`,
+            `https://portfolio-admin-panel-uyro.onrender.com/api/v1/timeline/delete/${id}`,
             { withCredentials: true }
         );
         dispatch(timelineSlice.actions.deleteTimelineSuccess(data.message));
@@ -108,7 +108,7 @@ export const addNewTimeline = (timelineData) => async (dispatch) => {
     dispatch(timelineSlice.actions.addTimelineRequest());
     try {
         const { data } = await axios.post(
-            `http://localhost:4000/api/v1/timeline/add`,
+            `https://portfolio-admin-panel-uyro.onrender.com/api/v1/timeline/add`,
             timelineData,
             {
                 withCredentials: true,
