@@ -17,7 +17,7 @@ const Contact = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:4000/api/v1/message/send",
+                "https://portfolio-admin-panel-uyro.onrender.com/api/v1/message/send",
                 { senderName, subject, message },
                 { withCredentials: true, headers: { "Content-Type": "application/json" } }
             );

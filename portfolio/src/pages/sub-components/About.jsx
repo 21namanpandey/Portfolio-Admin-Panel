@@ -8,7 +8,7 @@ const About = () => {
         const getMyProfile = async () => {
             try {
                 const { data } = await axios.get(
-                    "http://localhost:4000/api/v1/user/me/portfolio",
+                    "https://portfolio-admin-panel-uyro.onrender.com/api/v1/user/me/portfolio",
                     { withCredentials: true }
                 );
                 setUser(data.user);
