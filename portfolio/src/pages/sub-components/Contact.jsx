@@ -10,29 +10,27 @@ const Contact = () => {
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
+
     const handleSendMessage = async (e) => {
         e.preventDefault();
         setLoading(true);
-        await axios
-            .post(
-                "https://portfolio-admin-panel-uyro.onrender.com/api/v1/message/send",
+
+        try {
+            const response = await axios.post(
+                "http://localhost:4000/api/v1/message/send",
                 { senderName, subject, message },
-                {
-                    withCredentials: true,
-                    headers: { "Content-Type": "application/json" },
-                }
-            )
-            .then((res) => {
-                toast.success(res.data.message);
-                setSenderName("");
-                setSubject("");
-                setMessage("");
-                setLoading(false);
-            })
-            .catch((error) => {
-                toast.error(error.response.data.message);
-                setLoading(false);
-            });
+                { withCredentials: true, headers: { "Content-Type": "application/json" } }
+            );
+
+            toast.success(response.data.message);
+            setSenderName("");
+            setSubject("");
+            setMessage("");
+        } catch (error) {
+            toast.error(error.response?.data.message || "Failed to send message.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -43,14 +41,12 @@ const Contact = () => {
                     style={{ background: "hsl(222.2 84% 4.9%)" }}
                 >
                     CONTACT
-                    <span className="text-tubeLight-effect font-extrabold">
-                        ME
-                    </span>
+                    <span className="text-tubeLight-effect font-extrabold">ME</span>
                 </h1>
 
                 <span className="absolute w-full h-1 top-7 sm:top-7 md:top-8 lg:top-11 z-[-1] bg-slate-200 "></span>
             </div>
-            <form onSubmit={handleSendMessage} className="flex flex-col gap-6 ">
+            <form onSubmit={handleSendMessage} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2 px-1.5">
                     <Label className="text-xl">Your Name</Label>
                     <Input
@@ -82,12 +78,12 @@ const Contact = () => {
                         <button
                             disabled
                             type="button"
-                            className="w-full sm:w-52 text-slate-900  bg-white hover:bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-white dark:hover:bg-slate-200 dark:focus:ring-blue-800 inline-flex items-center"
+                            className="w-full sm:w-52 text-slate-900 bg-white hover:bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-white dark:hover:bg-slate-200 dark:focus:ring-blue-800 inline-flex items-center"
                         >
                             <svg
                                 aria-hidden="true"
                                 role="status"
-                                class="inline w-4 h-4 me-3 text-slate-950 animate-spin"
+                                className="inline w-4 h-4 me-3 text-slate-950 animate-spin"
                                 viewBox="0 0 100 101"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
