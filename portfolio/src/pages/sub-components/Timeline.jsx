@@ -6,17 +6,20 @@ const Timeline = () => {
     useEffect(() => {
         const getMyTimeline = async () => {
             const { data } = await axios.get(
-                "https://portfolio-admin-panel-uyro.onrender.com/api/v1/timeline/getAll",
+                "http://localhost:4000/api/v1/timeline/getAll",
                 { withCredentials: true }
             );
-            setTimeline(data.timelines);
+            setTimeline(data.timelines.reverse());
         };
         getMyTimeline();
     }, []);
     return (
         <>
             <div>
-                <h1 className=" overflow-x-hidden text-[1.75rem]md:text-[2.2rem] lg:text-[2.8rem] mb-4 font-extrabold   ">Timeline</h1>
+                <h1 className="text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] mb-4 font-extrabold text-center">
+                    Timeline
+                </h1>
+
 
                 <ol className="relative border-s border-gray-200 dark:border-gray-700">
                     {timeline &&
@@ -38,7 +41,8 @@ const Timeline = () => {
                                         {element.title}
                                     </h3>
                                     <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                                        {element.timeline.from} - {element.timeline.to ? element.timeline.to : "Present"}
+                                        {element.timeline.from} -{" "}
+                                        {element.timeline.to ? element.timeline.to : "Present"}
                                     </time>
                                     <p className="text-base font-normal text-gray-500 dark:text-gray-400">
                                         {element.description}
