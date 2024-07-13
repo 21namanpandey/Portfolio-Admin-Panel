@@ -7,7 +7,7 @@ const MyApps = () => {
     useEffect(() => {
         const getMyApps = async () => {
             const { data } = await axios.get(
-                "https://portfolio-admin-panel-uyro.onrender.com/api/v1/softwareApplication/getAll",
+                "http://localhost:4000/api/v1/softwareApplication/getAll",
                 { withCredentials: true }
             );
             setApps(data.softwareApplications);
@@ -32,7 +32,7 @@ const MyApps = () => {
                                     <img
                                         src={element.svg && element.svg.url}
                                         alt={element.title}
-                                        className="h-12 sm:h-24 w-auto"
+                                        className="h-12 mt-2 sm:h-24 w-auto"
                                     />
                                     <p className="text-muted-foreground text-center">
                                         {element.name}
