@@ -2,12 +2,11 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import {
     ExternalLink,
-    Facebook,
     Github,
-    Instagram,
     Linkedin,
     Twitter,
-    Youtube,
+    Mail,
+    Link2,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -18,23 +17,24 @@ const Hero = () => {
     useEffect(() => {
         const getMyProfile = async () => {
             const { data } = await axios.get(
-                "https://portfolio-admin-panel-uyro.onrender.com/api/v1/user/me/portfolio",
+                "http://localhost:4000/api/v1/user/me/portfolio",
                 { withCredentials: true }
             );
             setUser(data.user);
         };
         getMyProfile();
     }, []);
+
     return (
-        <div className="w-full">
-            <div className="flex items-center gap-2 mb-2">
-                <span className="bg-green-400 rounded-full h-2 w-2 "></span>
-                <p>Online</p>
+        <div className="w-full px-6 py-6 bg-gray-900 text-white rounded-md">
+            <div className="flex items-center gap-2 mb-4">
+                <span className="bg-green-400 rounded-full h-3 w-3"></span>
+                <p className="text-gray-400">Online</p>
             </div>
-            <h1 className=" overflow-x-hidden text-[1.3rem] sm:text-[1.7rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4 ">
+            <h1 className="overflow-x-hidden text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] tracking-wide mb-4 font-bold text-white">
                 Hey, I'm {user.fullName}
             </h1>
-            <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] sm:text-[1.7rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px] ">
+            <h2 className="text-green-400 overflow-x-hidden text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] tracking-widest mb-6">
                 <Typewriter
                     words={["Full Stack Developer"]}
                     loop={50}
@@ -43,44 +43,38 @@ const Hero = () => {
                     deleteSpeed={70}
                     delaySpeed={100}
                 />
-            </h1>
-            <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 items-center mt-4 md:mt-8 lg:mt-10 ">
-                <Link to={"/"} target="_blank">
-                    <Youtube className="text-red-500 w-7 h-7" />
+            </h2>
+            <div className="w-fit px-8 py-4 bg-gray-800 rounded-full shadow-lg flex gap-6 items-center mt-4 md:mt-8 lg:mt-10">
+                <Link to={user.facebookURL} target="_blank">
+                    <Link2 className="text-orange-500 w-7 h-7 hover:scale-110 transition-transform duration-200" />
                 </Link>
                 <Link to={user.instagramURL} target="_blank">
-                    <Instagram className="text-pink-500 w-7 h-7" />
-                </Link>
-                <Link to={user.facebookURL} target="_blank">
-                    <Facebook className="text-blue-800 w-7 h-7" />
+                    <Mail className="text-white w-7 h-7 hover:scale-110 transition-transform duration-200" />
                 </Link>
                 <Link to={user.linkedinURL} target="_blank">
-                    <Linkedin className="text-red-500 w-7 h-7" />
+                    <Linkedin className="text-blue-700 w-7 h-7 hover:scale-110 transition-transform duration-200" />
                 </Link>
                 <Link to={user.twitterURL} target="_blank">
-                    <Twitter className="text-blue-600 w-7 h-7" />
+                    <Twitter className="text-blue-400 w-7 h-7 hover:scale-110 transition-transform duration-200" />
                 </Link>
             </div>
-            <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
+            <div className="mt-6 md:mt-10 lg:mt-12 flex gap-4">
                 <Link to={user.githubURL} target="_blank">
-                    <Button className="rounded-[30px] flex items-center gap-2 flex-row ">
-                        <span>
-                            <Github />
-                        </span>
+                    <Button className="rounded-full flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-900 text-white hover:from-gray-600 hover:to-gray-800 transition-colors duration-200">
+                        <Github className="w-5 h-5" />
                         <span>GitHub</span>
                     </Button>
                 </Link>
                 <Link to={user.resume && user.resume.url} target="_blank">
-                    <Button className="rounded-[30px] flex items-center gap-2 flex-row ">
-                        <span>
-                            <ExternalLink />
-                        </span>
+                    <Button className="rounded-full flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-500 hover:to-blue-700 transition-colors duration-200">
+                        <ExternalLink className="w-5 h-5" />
                         <span>Resume</span>
                     </Button>
                 </Link>
             </div>
-            <p className="mt-8 text-xl trackin-[2px]  ">{user.aboutMe}</p>
-            <hr className=" my-8 md:my-10 "/>
+            <p className="mt-8 text-lg tracking-wide text-gray-300">
+                {user.aboutMe}
+            </p>
         </div>
     );
 };
