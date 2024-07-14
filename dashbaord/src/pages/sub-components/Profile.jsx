@@ -27,13 +27,28 @@ const Profile = () => {
                                     className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
                                 />
                             </div>
-                            <div className="grid gap-2 w-full sm:w-72">
+
+                            {/* {while uploading picture} */}
+                            {/* <div className="grid gap-2 w-full sm:w-72">
                                 <Label>Resume</Label>
                                 <img
                                     src={user && user.resume && user.resume.url}
                                     alt="resume"
                                     className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
                                 />
+                            </div> */}
+
+                            {/* {while uploading pdf} */}
+                            <div className="grid gap-2 w-full sm:w-72">
+                                <Label>Resume</Label>
+                                {user && user.resume && user.resume.url ? (
+                                    <iframe
+                                        src={user.resume.url}
+                                        className="w-full h-96 sm:w-72 sm:h-96 rounded-2xl border-none"
+                                    />
+                                ) : (
+                                    <p>No resume uploaded</p>
+                                )}
                             </div>
                         </div>
                         <div className="grid gap-2">
