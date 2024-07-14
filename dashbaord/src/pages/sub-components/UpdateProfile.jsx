@@ -138,7 +138,9 @@ const UpdateProfile = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="grid gap-2 w-full sm:w-72">
+
+                                {/* {while uploading picture} */}
+                                {/* <div className="grid gap-2 w-full sm:w-72">
                                     <Label>Resume</Label>
                                     <Link
                                         to={
@@ -158,6 +160,29 @@ const UpdateProfile = () => {
                                             className="w-full  h-auto sm:w-72 sm:h-72 rounded-2xl"
                                         />
                                     </Link>
+                                    <div className="relative">
+                                        <input
+                                            type="file"
+                                            onChange={resumeHandler}
+                                            className="avatar-update-btn"
+                                        />
+                                    </div>
+                                </div> */}
+                                {/* {while uploading pdf} */}
+                                <div className="grid gap-2 w-full sm:w-72">
+                                    <Label>Resume</Label>
+                                    {resumePreview ? (
+                                        <iframe
+                                            src={resumePreview}
+                                            className="w-full h-96 sm:w-72 sm:h-96 rounded-2xl border-none"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={"/avatarHolder.jpg"}
+                                            alt="resume"
+                                            className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
+                                        />
+                                    )}
                                     <div className="relative">
                                         <input
                                             type="file"
